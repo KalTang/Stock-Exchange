@@ -41,11 +41,11 @@ An app where you can buy, sell, and view a variety of stocks :bar_chart:
 
 -   Stock view/Buy / Sell
 
-<img src="https://i.imgur.com/Bb9qlcw.png" alt="Low Fidelity for Stock Exchange App" width="80%" />
+<img src="https://i.imgur.com/k0S5arP.png" alt="Low Fidelity for Stock Exchange App" width="80%" />
 
--   Confirmation / Wishlist
+-   Confirmation / Wishlist / add funds
 
-<img src="https://i.imgur.com/8qDb4Z3.png" alt="Low Fidelity for Stock Exchange App" width="80%" />
+<img src="https://i.imgur.com/bUaqQID.png" alt="Low Fidelity for Stock Exchange App" width="80%" />
 
 </br>
 
