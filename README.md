@@ -37,7 +37,15 @@ An app where you can buy, sell, and view a variety of stocks :bar_chart:
 
 -   Login/Register page
 
-<img src="https://i.imgur.com/Az6VPaJ.png" alt="Low Fidelity for AFK & Chill" width="100%" />
+<img src="https://i.imgur.com/Az6VPaJ.png" alt="Low Fidelity for Stock Exchange App" width="80%" />
+
+-   Stock view/Buy / Sell
+
+<img src="https://i.imgur.com/Bb9qlcw.png" alt="Low Fidelity for Stock Exchange App" width="80%" />
+
+-   Confirmation / Wishlist
+
+<img src="https://i.imgur.com/8qDb4Z3.png" alt="Low Fidelity for Stock Exchange App" width="80%" />
 
 </br>
 
