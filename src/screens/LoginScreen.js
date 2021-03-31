@@ -7,8 +7,9 @@ import {
     Button,
     StyleSheet,
 } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const Login = () => {
+const LoginScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <Text style={styles.title}>Login</Text>
@@ -21,10 +22,23 @@ const Login = () => {
 
             <Button title="Login" />
 
-            <Text style={{ color: '#b73535', fontSize: 18, marginTop: 20 }}>
+            <Text style={{ color: '#b73535', fontSize: 25, marginTop: 20 }}>
                 Don't have an account?
             </Text>
-            <Button title="Sign up here" />
+            <TouchableOpacity
+                onPress={() => navigation.navigate('RegisterScreen')}
+            >
+                <Text
+                    style={{
+                        color: '#077edc',
+                        fontSize: 25,
+                        marginBottom: 10,
+                        marginTop: 10,
+                    }}
+                >
+                    Sign Up here!
+                </Text>
+            </TouchableOpacity>
         </SafeAreaView>
     );
 };
@@ -49,4 +63,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Login;
+export default LoginScreen;
