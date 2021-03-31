@@ -16,8 +16,8 @@ export default function LandingScreen({ navigation }) {
             >
                 <Text
                     style={{
-                        color: 'cyan',
-                        fontSize: 20,
+                        color: '#077edc',
+                        fontSize: 25,
                         marginBottom: 10,
                     }}
                 >
@@ -29,8 +29,8 @@ export default function LandingScreen({ navigation }) {
             >
                 <Text
                     style={{
-                        color: 'cyan',
-                        fontSize: 20,
+                        color: '#077edc',
+                        fontSize: 25,
                         marginBottom: 10,
                     }}
                 >
