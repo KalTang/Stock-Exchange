@@ -9,16 +9,22 @@ import {
     StyleSheet,
 } from 'react-native';
 
-const SearchBar = ({ term, onTermChange, onTermSubmit }) => {
+const SearchBar = ({ input, onInputChange, onInputSubmit }) => {
     return (
         <View style={styles.background}>
-            <EvilIcons style={styles.icon} name="search" />
+            <EvilIcons
+                style={styles.icon}
+                name="search"
+                size={20}
+                color={'#b73535'}
+            />
             <TextInput
-                placeholder="Search Stock"
-                value={term}
+                placeholder="Search"
+                placeholderTextColor="#b73535"
+                value={input}
                 style={styles.input}
-                onChangeText={(newTerm) => onTermChange(newTerm)}
-                onSubmitEditing={() => onTermSubmit()}
+                onChangeText={(newInput) => onInputChange(newInput)}
+                onSubmitEditing={() => onInputSubmit()}
             />
         </View>
     );
