@@ -8,7 +8,7 @@ import {
     StyleSheet,
 } from 'react-native';
 
-const Register = () => {
+const RegisterScreen = () => {
     return (
         <SafeAreaView style={styles.container}>
             <Text style={styles.title}>Register</Text>
@@ -57,4 +57,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Register;
+export default RegisterScreen;

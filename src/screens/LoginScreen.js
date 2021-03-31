@@ -8,7 +8,7 @@ import {
     StyleSheet,
 } from 'react-native';
 
-const Login = () => {
+const LoginScreen = () => {
     return (
         <SafeAreaView style={styles.container}>
             <Text style={styles.title}>Login</Text>
@@ -49,4 +49,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Login;
+export default LoginScreen;
