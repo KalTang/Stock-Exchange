@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     View,
     Text,
@@ -7,20 +7,28 @@ import {
     Button,
     StyleSheet,
 } from 'react-native';
-import SearchBar from '../components/SearchBar';
-import { FINNHUB_KEY } from ;
+import { API_KEY } from 'dotenv';
 import axios from 'axios';
+import SearchBar from '../components/SearchBar';
+import SearchResults from '../components/SearchResults';
 
 const BuyScreen = () => {
     const [input, setInput] = useState('');
+    const [quote, setQuote] = useState([]);
 
     const searchAPI = async () => {
-        //Get current price for Quote
+        //Get current price Quote "C"
         try {
+            console.log('API KEY >>>>>', API_KEY);
+
             const response = await axios.get(
-                `https://finnhub.io/api/v1/quote?symbol=${input}&token=${FINNHUB_KEY}`
+                `https://finnhub.io/api/v1/quote?symbol=${input}&token=${API_KEY}`
             );
-        } catch (err) {}
+            console.log('Api response >>>>>', response.data.c);
+            setQuote(response.data.c);
+        } catch (err) {
+            console.log(err);
+        }
     };
 
     return (
@@ -31,6 +39,8 @@ const BuyScreen = () => {
                 onInputChange={(newInput) => setInput(newInput)}
                 onInputSubmit={() => searchAPI()}
             />
+
+            <SearchResults />
         </SafeAreaView>
     );
 };
