@@ -20,9 +20,9 @@ const BuyScreen = () => {
         //Get current price Quote "C"
         try {
             const response = await axios.get(
-                `https://finnhub.io/api/v1/quote?symbol=${input}&token=${API_KEY}`
+                `https://finnhub.io/api/v1/quote?symbol=${input.toUpperCase()}&token=${API_KEY}`
             );
-            console.log('Api response >>>>>', response.data.c);
+
             setQuote(response.data.c);
         } catch (err) {
             console.log(err);
