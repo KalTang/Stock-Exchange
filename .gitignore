@@ -9,6 +9,7 @@ npm-debug.*
 *.orig.*
 web-build/
 spare.js
+.env
 
 # macOS
 .DS_Store
