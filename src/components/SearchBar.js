@@ -15,12 +15,13 @@ const SearchBar = ({ input, onInputChange, onInputSubmit }) => {
             <EvilIcons
                 style={styles.icon}
                 name="search"
-                size={20}
+                size={50}
                 color={'#b73535'}
             />
             <TextInput
                 placeholder="Search"
                 placeholderTextColor="#b73535"
+                color="#b73535"
                 value={input}
                 style={styles.input}
                 onChangeText={(newInput) => onInputChange(newInput)}
@@ -32,11 +33,12 @@ const SearchBar = ({ input, onInputChange, onInputSubmit }) => {
 
 const styles = StyleSheet.create({
     background: {
-        height: 50,
-        borderRadius: 6,
+        height: 70,
+        borderRadius: 10,
         marginHorizontal: 15,
         flexDirection: 'row',
         alignItems: 'center',
+        borderColor: '#b73535',
     },
     input: {
         flex: 1,

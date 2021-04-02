@@ -19,8 +19,6 @@ const BuyScreen = () => {
     const searchAPI = async () => {
         //Get current price Quote "C"
         try {
-            console.log('API KEY >>>>>', API_KEY);
-
             const response = await axios.get(
                 `https://finnhub.io/api/v1/quote?symbol=${input}&token=${API_KEY}`
             );
@@ -33,14 +31,14 @@ const BuyScreen = () => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <Text style={{ color: '#b73535', fontSize: 20 }}>BuyScreen</Text>
+            <Text style={{ color: '#b73535', fontSize: 20 }}>Results</Text>
             <SearchBar
                 input={input}
                 onInputChange={(newInput) => setInput(newInput)}
                 onInputSubmit={() => searchAPI()}
             />
 
-            <SearchResults />
+            <SearchResults symbol={input} price={quote} />
         </SafeAreaView>
     );
 };

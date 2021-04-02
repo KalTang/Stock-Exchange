@@ -7,10 +7,11 @@ import {
     TouchableOpacity,
 } from 'react-native';
 
-const SearchResults = () => {
+const SearchResults = ({ symbol, price }) => {
     return (
         <View style={{ margin: 10 }}>
-            <Text style={{ color: 'white', fontSize: 30 }}>Hi</Text>
+            <Text style={{ color: '#b73535', fontSize: 30 }}>{symbol}</Text>
+            <Text style={{ color: '#b73535', fontSize: 30 }}>${price}</Text>
         </View>
     );
 };
