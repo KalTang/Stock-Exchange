@@ -10,7 +10,9 @@ import {
 const SearchResults = ({ symbol, price }) => {
     return (
         <View style={styles.row}>
-            <Text style={{ color: '#b73535', fontSize: 30 }}>{symbol} - </Text>
+            <Text style={{ color: '#b73535', fontSize: 30 }}>
+                {symbol.toUpperCase()} -{' '}
+            </Text>
             <Text style={{ color: '#b73535', fontSize: 30 }}>${price}</Text>
         </View>
     );
