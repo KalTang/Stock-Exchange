@@ -8,6 +8,7 @@ import {
     StyleSheet,
 } from 'react-native';
 import SearchBar from '../components/SearchBar';
+import axios from 'axios';
 
 const SearchScreen = () => {
     return (
