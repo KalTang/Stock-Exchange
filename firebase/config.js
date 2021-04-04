@@ -14,6 +14,7 @@ import {
 const firebaseConfig = {
     apiKey: FIREBASE_API_KEY,
     authDomain: AUTH_DOMAIN,
+    databaseURL: 'https://stockexchange-95b84.firebaseio.com',
     projectId: PROJECT_ID,
     storageBucket: STORAGE_BUCKET,
     messagingSenderId: MESSAGE_SENDER_ID,

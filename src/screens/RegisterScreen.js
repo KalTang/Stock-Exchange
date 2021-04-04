@@ -8,14 +8,13 @@ import {
     StyleSheet,
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import firebase from '../../firebase/firebaseConfig';
-
+import { firebase } from '../../firebase/config';
 const RegisterScreen = ({ navigation }) => {
-    const [fullName, setFullName] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-
     const onRegisterPress = () => {
         if (password !== confirmPassword) {
             alert("Passwords don't match.");
@@ -29,9 +28,9 @@ const RegisterScreen = ({ navigation }) => {
                 const data = {
                     id: uid,
                     email,
-                    fullName,
+                    firstName,
+                    lastName,
                 };
-
                 const usersRef = firebase.firestore().collection('users');
                 usersRef
                     .doc(uid)
@@ -44,20 +43,26 @@ const RegisterScreen = ({ navigation }) => {
                     });
             })
             .catch((error) => {
-                console.log(`error >>> ${error}`);
                 alert(error);
             });
     };
-
     return (
         <SafeAreaView style={styles.container}>
             <Text style={styles.title}>Register</Text>
-
             <TextInput
                 style={styles.formInput}
-                placeholder="Full Name"
-                onChangeText={(text) => setFullName(text)}
-                value={fullName}
+                placeholder="First Name"
+                onChangeText={(text) => setFirstName(text)}
+                value={firstName}
+                underlineColorAndroid="transparent"
+                autoCapitalize="none"
+            />
+            <TextInput
+                style={styles.formInput}
+                placeholder="Last Name"
+                onChangeText={(text) => setLastName(text)}
+                value={lastName}
+                underlineColorAndroid="transparent"
                 autoCapitalize="none"
             />
             <TextInput
@@ -65,6 +70,7 @@ const RegisterScreen = ({ navigation }) => {
                 placeholder="Email"
                 onChangeText={(text) => setEmail(text)}
                 value={email}
+                underlineColorAndroid="transparent"
                 autoCapitalize="none"
             />
             <TextInput
@@ -73,6 +79,7 @@ const RegisterScreen = ({ navigation }) => {
                 secureTextEntry={true}
                 onChangeText={(text) => setPassword(text)}
                 value={password}
+                underlineColorAndroid="transparent"
                 autoCapitalize="none"
             />
             <TextInput
@@ -81,17 +88,15 @@ const RegisterScreen = ({ navigation }) => {
                 secureTextEntry={true}
                 onChangeText={(text) => setConfirmPassword(text)}
                 value={confirmPassword}
+                underlineColorAndroid="transparent"
                 autoCapitalize="none"
             />
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => {
-                    onRegisterPress();
-                }}
+                onPress={() => onRegisterPress()}
             >
                 <Text style={styles.buttonTitle}>Create account</Text>
             </TouchableOpacity>
-
             <Text style={{ color: '#b73535', fontSize: 18, marginTop: 20 }}>
                 Already have an account?
             </Text>
@@ -113,25 +118,8 @@ const RegisterScreen = ({ navigation }) => {
     );
 };
 const styles = StyleSheet.create({
-    button: {
-        backgroundColor: '#b73535',
-        marginLeft: 30,
-        marginRight: 30,
-        marginTop: 20,
-        height: 48,
-        borderRadius: 5,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    buttonTitle: {
-        color: 'white',
-        fontSize: 16,
-        fontWeight: 'bold',
-        padding: 5,
-    },
     container: {
         flex: 1,
-
         backgroundColor: '#121212',
         alignItems: 'center',
         justifyContent: 'center',
@@ -147,6 +135,20 @@ const styles = StyleSheet.create({
         color: '#b73535',
         marginBottom: 15,
     },
+    button: {
+        backgroundColor: '#788eec',
+        marginLeft: 30,
+        marginRight: 30,
+        marginTop: 20,
+        height: 48,
+        borderRadius: 5,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    buttonTitle: {
+        color: 'white',
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
 });
-
 export default RegisterScreen;
