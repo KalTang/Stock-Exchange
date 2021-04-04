@@ -85,7 +85,9 @@ const RegisterScreen = ({ navigation }) => {
             />
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => onRegisterPress()}
+                onPress={() => {
+                    onRegisterPress();
+                }}
             >
                 <Text style={styles.buttonTitle}>Create account</Text>
             </TouchableOpacity>
