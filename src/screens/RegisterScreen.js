@@ -36,7 +36,8 @@ const RegisterScreen = ({ navigation }) => {
                     .doc(uid)
                     .set(data)
                     .then(() => {
-                        navigation.navigate('Home', { user: data });
+                        console.log('Register successfully');
+                        // navigation.navigate('Home', { user: data });
                     })
                     .catch((error) => {
                         alert(error);
@@ -136,7 +137,7 @@ const styles = StyleSheet.create({
         marginBottom: 15,
     },
     button: {
-        backgroundColor: '#788eec',
+        backgroundColor: '#b73535',
         marginLeft: 30,
         marginRight: 30,
         marginTop: 20,
