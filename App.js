@@ -35,6 +35,7 @@ export default function App() {
     return (
         <SafeAreaProvider>
             <NavigationContainer>
+                {console.log(user)}
                 <Stack.Navigator>
                     {user ? (
                         <Stack.Screen name="HomeScreen">
@@ -47,7 +48,9 @@ export default function App() {
                             <Stack.Screen
                                 name="Root"
                                 component={BottomTabNavigator}
+                                screenOptions={{ headerShown: false }}
                             />
+                            {}
                         </>
                     )}
                 </Stack.Navigator>
