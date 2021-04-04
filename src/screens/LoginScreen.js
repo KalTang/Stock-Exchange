@@ -30,7 +30,7 @@ const LoginScreen = ({ navigation }) => {
                             return;
                         }
                         const user = firestoreDocument.data();
-                        // navigation.navigate('HomeScreen', { user });
+                        navigation.navigate('HomeScreen', { user });
                         console.log('login successful');
                     })
                     .catch((error) => {
