@@ -9,15 +9,15 @@ import {
     StyleSheet,
 } from 'react-native';
 import { firebase } from '../../firebase/config';
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = ({ user, setUser }) => {
     const onLogoutPress = () => {
         firebase
             .auth()
             .signOut()
             .then(function () {
                 // Sign-out successful.
+                setUser(null);
                 console.log('logout successfully');
-                //navigation.navigate('LandingScreen');
             })
             .catch(function (error) {
                 // An error happened
@@ -25,8 +25,8 @@ const HomeScreen = ({ navigation }) => {
             });
     };
     return (
-        <View>
-            <Text>HomeScreen</Text>
+        <View style={styles.container}>
+            <Text style={styles.title}>Welcome back, {user.firstName} !</Text>
             <TouchableOpacity
                 style={styles.button}
                 onPress={() => onLogoutPress()}
@@ -40,14 +40,14 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#121212',
-        alignItems: 'center',
         justifyContent: 'center',
     },
     title: {
         fontSize: 35,
         fontWeight: 'bold',
-        color: '#b73535',
+        color: 'white',
         marginBottom: 15,
+        textAlign: 'center',
     },
     formInput: {
         fontSize: 20,

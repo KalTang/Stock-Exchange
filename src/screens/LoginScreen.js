@@ -9,11 +9,9 @@ import {
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { firebase } from '../../firebase/config';
-
 const LoginScreen = ({ navigation }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
     const onLoginPress = () => {
         firebase
             .auth()
@@ -30,7 +28,7 @@ const LoginScreen = ({ navigation }) => {
                             return;
                         }
                         const user = firestoreDocument.data();
-                        navigation.navigate('HomeScreen', { user });
+                        // navigation.navigate('HomeScreen', { user });
                         console.log('login successful');
                     })
                     .catch((error) => {
@@ -57,14 +55,12 @@ const LoginScreen = ({ navigation }) => {
                 value={password}
                 onChangeText={(text) => setPassword(text)}
             />
-
             <TouchableOpacity
                 style={styles.button}
                 onPress={() => onLoginPress()}
             >
                 <Text style={styles.buttonTitle}>Login</Text>
             </TouchableOpacity>
-
             <Text style={{ color: '#b73535', fontSize: 25, marginTop: 20 }}>
                 Don't have an account?
             </Text>
@@ -88,7 +84,6 @@ const LoginScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-
         backgroundColor: '#121212',
         alignItems: 'center',
         justifyContent: 'center',
@@ -120,5 +115,4 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
 });
-
 export default LoginScreen;
