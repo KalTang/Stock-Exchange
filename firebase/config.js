@@ -1,6 +1,7 @@
 import * as firebase from 'firebase';
 import '@firebase/auth';
 import '@firebase/firestore';
+
 import {
     FIREBASE_API_KEY,
     AUTH_DOMAIN,
@@ -13,6 +14,7 @@ import {
 const firebaseConfig = {
     apiKey: FIREBASE_API_KEY,
     authDomain: AUTH_DOMAIN,
+    databaseURL: 'https://stockexchange-95b84.firebaseio.com',
     projectId: PROJECT_ID,
     storageBucket: STORAGE_BUCKET,
     messagingSenderId: MESSAGE_SENDER_ID,
