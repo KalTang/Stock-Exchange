@@ -5,6 +5,7 @@ import {
     TextInput,
     SafeAreaView,
     Button,
+    Image,
     StyleSheet,
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -41,16 +42,22 @@ const LoginScreen = ({ navigation }) => {
     };
     return (
         <SafeAreaView style={styles.container}>
-            <Text style={styles.title}>Login</Text>
+            <Image
+                style={{ width: 340, height: 140, marginBottom: '9%' }}
+                source={require('../../assets/SELogo.png')}
+            />
+
             <TextInput
                 style={styles.formInput}
                 placeholder="Email"
+                placeholderTextColor="lightgrey"
                 value={email}
                 onChangeText={(text) => setEmail(text)}
             />
             <TextInput
                 style={styles.formInput}
                 placeholder="Password"
+                placeholderTextColor="lightgrey"
                 secureTextEntry={true}
                 value={password}
                 onChangeText={(text) => setPassword(text)}
@@ -89,7 +96,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     title: {
-        fontSize: 35,
+        fontSize: 30,
         fontWeight: 'bold',
         color: '#b73535',
         marginBottom: 15,
@@ -97,7 +104,13 @@ const styles = StyleSheet.create({
     formInput: {
         fontSize: 20,
         color: '#b73535',
+        width: '60%',
+        height: '5%',
         marginBottom: 15,
+        borderWidth: 2, // size/width of the border
+        borderColor: 'lightgrey', // color of the border
+        padding: 10,
+        borderRadius: 5,
     },
     button: {
         backgroundColor: '#b73535',
@@ -105,6 +118,7 @@ const styles = StyleSheet.create({
         marginRight: 30,
         marginTop: 20,
         height: 48,
+        padding: 15,
         borderRadius: 5,
         alignItems: 'center',
         justifyContent: 'center',

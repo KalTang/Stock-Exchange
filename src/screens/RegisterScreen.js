@@ -5,6 +5,7 @@ import {
     TextInput,
     SafeAreaView,
     Button,
+    Image,
     StyleSheet,
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -55,11 +56,15 @@ const RegisterScreen = ({ navigation }) => {
     };
     return (
         <SafeAreaView style={styles.container}>
-            <Text style={styles.title}>Register</Text>
+            <Image
+                style={{ width: 330, height: 130, marginBottom: '9%' }}
+                source={require('../../assets/SELogo.png')}
+            />
 
             <TextInput
                 style={styles.formInput}
                 placeholder="First Name"
+                placeholderTextColor="lightgrey"
                 onChangeText={(text) => setFirstName(text)}
                 value={firstName}
                 underlineColorAndroid="transparent"
@@ -68,6 +73,7 @@ const RegisterScreen = ({ navigation }) => {
             <TextInput
                 style={styles.formInput}
                 placeholder="Last Name"
+                placeholderTextColor="lightgrey"
                 onChangeText={(text) => setLastName(text)}
                 value={lastName}
                 underlineColorAndroid="transparent"
@@ -76,6 +82,7 @@ const RegisterScreen = ({ navigation }) => {
             <TextInput
                 style={styles.formInput}
                 placeholder="Email"
+                placeholderTextColor="lightgrey"
                 onChangeText={(text) => setEmail(text)}
                 value={email}
                 underlineColorAndroid="transparent"
@@ -84,6 +91,7 @@ const RegisterScreen = ({ navigation }) => {
             <TextInput
                 style={styles.formInput}
                 placeholder="Password"
+                placeholderTextColor="lightgrey"
                 secureTextEntry={true}
                 onChangeText={(text) => setPassword(text)}
                 value={password}
@@ -93,6 +101,7 @@ const RegisterScreen = ({ navigation }) => {
             <TextInput
                 style={styles.formInput}
                 placeholder="Confirm password"
+                placeholderTextColor="lightgrey"
                 secureTextEntry={true}
                 onChangeText={(text) => setConfirmPassword(text)}
                 value={confirmPassword}
@@ -114,7 +123,7 @@ const RegisterScreen = ({ navigation }) => {
                 <Text
                     style={{
                         color: '#077edc',
-                        fontSize: 20,
+                        fontSize: 25,
                         marginBottom: 10,
                         marginTop: 10,
                     }}
@@ -141,7 +150,13 @@ const styles = StyleSheet.create({
     formInput: {
         fontSize: 20,
         color: '#b73535',
+        width: '57%',
+        height: '5%',
         marginBottom: 15,
+        borderWidth: 2, // size/width of the border
+        borderColor: 'lightgrey', // color of the border
+        padding: 15,
+        borderRadius: 5,
     },
     button: {
         backgroundColor: '#b73535',
@@ -152,6 +167,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         alignItems: 'center',
         justifyContent: 'center',
+        padding: 10,
     },
     buttonTitle: {
         color: 'white',
