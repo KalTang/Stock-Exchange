@@ -9,12 +9,15 @@ import {
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { firebase } from '../../firebase/config';
+import { registerUser } from '../network';
+
 const RegisterScreen = ({ navigation }) => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+
     const onRegisterPress = () => {
         if (password !== confirmPassword) {
             alert("Passwords don't match.");
@@ -36,6 +39,9 @@ const RegisterScreen = ({ navigation }) => {
                     .doc(uid)
                     .set(data)
                     .then(() => {
+                        registerUser({ userId: uid });
+                    })
+                    .then(() => {
                         console.log('Register successfully');
                         // navigation.navigate('Home', { user: data });
                     })
@@ -50,6 +56,7 @@ const RegisterScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <Text style={styles.title}>Register</Text>
+
             <TextInput
                 style={styles.formInput}
                 placeholder="First Name"

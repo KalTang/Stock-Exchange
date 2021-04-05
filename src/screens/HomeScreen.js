@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     View,
     Text,
@@ -8,8 +8,10 @@ import {
     TouchableOpacity,
     StyleSheet,
 } from 'react-native';
+import { getPortfolio } from '../network';
 import { firebase } from '../../firebase/config';
 const HomeScreen = ({ user, setUser }) => {
+    const [userPortfolio, setUserPortfolio] = useState('');
     const onLogoutPress = () => {
         firebase
             .auth()
@@ -24,9 +26,20 @@ const HomeScreen = ({ user, setUser }) => {
                 console.log(error);
             });
     };
+    useEffect(() => {
+        (async () => {
+            try {
+                const tempUserPortfolio = await getPortfolio();
+                setUserPortfolio(tempUserPortfolio);
+            } catch (error) {
+                console.error(error.message);
+            }
+        })();
+    }, []);
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Welcome back, {user.firstName} !</Text>
+            <Text style={styles.title}>balance: {userPortfolio[0]?.value}</Text>
             <TouchableOpacity
                 style={styles.button}
                 onPress={() => onLogoutPress()}
@@ -43,7 +56,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     title: {
-        fontSize: 35,
+        fontSize: 30,
         fontWeight: 'bold',
         color: 'white',
         marginBottom: 15,
