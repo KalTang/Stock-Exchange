@@ -1,12 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Image, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 //import {createBottomTabNavigatior} from '@react-navigation/bottom-tabs'
 
 export default function LandingScreen({ navigation }) {
     return (
         <View style={styles.container}>
+            <Image
+                style={{ width: 340, height: 140, marginBottom: '9%' }}
+                source={require('../../assets/SELogo.png')}
+            />
             <Text style={styles.title}>Welcome to</Text>
             <Text style={styles.title2}>The Stock Exchange App</Text>
             <StatusBar style="auto" />
