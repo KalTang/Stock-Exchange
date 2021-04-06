@@ -13,7 +13,8 @@ const SearchResults = ({ symbol, price }) => {
             <Text style={{ color: '#b73535', fontSize: 30 }}>
                 {symbol.toUpperCase()} -{' '}
             </Text>
-            <Text style={{ color: '#b73535', fontSize: 30 }}>${price}</Text>
+
+            <Text style={{ color: '#b73535', fontSize: 30 }}>{price}</Text>
         </View>
     );
 };

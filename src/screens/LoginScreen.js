@@ -103,9 +103,9 @@ const styles = StyleSheet.create({
     },
     formInput: {
         fontSize: 20,
-        color: '#b73535',
-        width: '60%',
-        height: '5%',
+        color: '#fff',
+        width: '56%',
+
         marginBottom: 15,
         borderWidth: 2, // size/width of the border
         borderColor: 'lightgrey', // color of the border

@@ -20,8 +20,7 @@ const SearchBar = ({ input, onInputChange, onInputSubmit }) => {
             />
             <TextInput
                 placeholder="Search"
-                placeholderTextColor="#b73535"
-                color="#b73535"
+                placeholderTextColor="lightgrey"
                 value={input}
                 style={styles.input}
                 onChangeText={(newInput) => onInputChange(newInput)}
@@ -42,6 +41,14 @@ const styles = StyleSheet.create({
     },
     input: {
         flex: 1,
+        fontSize: 20,
+        color: '#b73535',
+        width: '60%',
+        height: 50,
+        marginBottom: 15,
+        borderWidth: 2, // size/width of the border
+        borderColor: 'lightgrey', // color of the border
+        borderRadius: 5,
     },
 
     icon: {

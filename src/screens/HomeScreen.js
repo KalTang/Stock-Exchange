@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { getPortfolio } from '../network';
 import { firebase } from '../../firebase/config';
+
 const HomeScreen = ({ user, setUser }) => {
     const [userPortfolio, setUserPortfolio] = useState('');
     const onLogoutPress = () => {
@@ -39,7 +40,11 @@ const HomeScreen = ({ user, setUser }) => {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Welcome back, {user.firstName} !</Text>
-            <Text style={styles.title}>balance: {userPortfolio[0]?.value}</Text>
+            <Text style={styles.title2}>
+                Portfolio B alance: {userPortfolio[0]?.value}
+            </Text>
+
+            <Text style={styles.title2}>Transaction History</Text>
             <TouchableOpacity
                 style={styles.button}
                 onPress={() => onLogoutPress()}
@@ -57,6 +62,13 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 30,
+        fontWeight: 'bold',
+        color: 'white',
+        marginBottom: 15,
+        textAlign: 'center',
+    },
+    title2: {
+        fontSize: 23,
         fontWeight: 'bold',
         color: 'white',
         marginBottom: 15,

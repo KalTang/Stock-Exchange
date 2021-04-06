@@ -11,11 +11,27 @@ import { API_KEY } from 'dotenv';
 import axios from 'axios';
 import SearchBar from '../components/SearchBar';
 import SearchResults from '../components/SearchResults';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { executeBuy } from '../network';
+import { firebase } from '../../firebase/config';
 
 const BuyScreen = () => {
     const [input, setInput] = useState('');
     const [quote, setQuote] = useState([]);
+    const [amount, setAmount] = useState('');
 
+    const handleBuy = async (data) => {
+        try {
+            const res = await executeBuy(data);
+            console.log(data);
+            if (res) {
+                setAmount('');
+            }
+        } catch (e) {
+            console.log(e);
+            console.log(data);
+        }
+    };
     const searchAPI = async () => {
         //Get current price Quote "C"
         try {
@@ -37,8 +53,37 @@ const BuyScreen = () => {
                 onInputChange={(newInput) => setInput(newInput)}
                 onInputSubmit={() => searchAPI()}
             />
+            <Button
+                style={styles.button}
+                title="Search"
+                onPress={() => searchAPI()}
+            />
 
             <SearchResults symbol={input} price={quote} />
+            <View style={{ display: 'flex', flexDirection: 'row' }}>
+                <TextInput
+                    style={styles.input}
+                    placeholder=" amount"
+                    placeholderTextColor="#aaaaaa"
+                    onChangeText={(text) => setAmount(text)}
+                    value={amount}
+                    underlineColorAndroid="transparent"
+                    autoCapitalize="none"
+                />
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => {
+                        handleBuy({
+                            symbol: input,
+                            qty: parseInt(amount),
+                            price: quote,
+                            createdOn: new Date(),
+                        });
+                    }}
+                >
+                    <Text style={styles.buttonTitle}>Buy</Text>
+                </TouchableOpacity>
+            </View>
         </SafeAreaView>
     );
 };
@@ -49,6 +94,31 @@ const styles = StyleSheet.create({
         backgroundColor: '#121212',
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    button: {
+        backgroundColor: '#b73535',
+        marginLeft: 30,
+        marginRight: 30,
+        marginTop: 20,
+        height: 48,
+        padding: 15,
+        borderRadius: 5,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    buttonTitle: {
+        color: 'white',
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
+    input: {
+        height: 48,
+        borderWidth: 2, // size/width of the border
+        borderColor: 'lightgrey', // color of the border
+        overflow: 'hidden',
+        backgroundColor: 'white',
+        marginTop: '5%',
+        padding: 10,
     },
 });
 

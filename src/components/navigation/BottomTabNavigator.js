@@ -13,10 +13,7 @@ export default function BottomTabNavigator({ user, setUser }) {
                     <HomeScreen {...props} user={user} setUser={setUser} />
                 )}
             </BottomTab.Screen>
-            <BottomTab.Screen
-                name="AddFundsScreen"
-                component={AddFundsScreen}
-            />
+            <BottomTab.Screen name="Transactions" component={AddFundsScreen} />
         </BottomTab.Navigator>
     );
 }
