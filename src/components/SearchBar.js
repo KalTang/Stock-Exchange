@@ -44,11 +44,10 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: '#b73535',
         width: '60%',
-        height: '5%',
+        height: 50,
         marginBottom: 15,
         borderWidth: 2, // size/width of the border
         borderColor: 'lightgrey', // color of the border
-        padding: 20,
         borderRadius: 5,
     },
 

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { firebase } from '../firebase/config';
+
 export const getUserId = () => {
     try {
         const userInfo = firebase.auth().currentUser;
@@ -39,20 +40,25 @@ export async function registerUser({ userId }) {
 }
 
 //Buy and sells a stock
-export async function executeBuy({ userId, symbol, qty, price, createdOn }) {
+export async function executeBuy({ symbol, qty, price, createdOn }) {
     try {
+        const uid = getUserId();
+        console.log(uid);
         const response = await axios.post(
             'https://mobileprojectapi20210329154219.azurewebsites.net/transaction',
             {
-                userId,
+                userId: uid,
                 symbol,
                 qty,
                 price,
                 createdOn,
             }
         );
+
+        console.log(response.data);
         return response.data;
     } catch (error) {
+        console.log(error);
         throw error;
     }
 }

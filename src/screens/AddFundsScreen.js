@@ -8,7 +8,7 @@ import {
     StyleSheet,
 } from 'react-native';
 const AddFundsScreen = () => {
-    return <Text>Add Funds Screen</Text>;
+    return <Text>Transactions</Text>;
 };
 
 export default AddFundsScreen;
