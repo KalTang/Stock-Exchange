@@ -8,6 +8,7 @@ export const getUserId = () => {
         console.log(e);
     }
 };
+//gets a users portfolio
 export const getPortfolio = async () => {
     try {
         const uid = getUserId();
@@ -29,6 +30,25 @@ export async function registerUser({ userId }) {
             'https://mobileprojectapi20210329154219.azurewebsites.net/register',
             {
                 userId,
+            }
+        );
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+}
+
+//Buy and sells a stock
+export async function executeBuy({ userId, symbol, qty, price, createdOn }) {
+    try {
+        const response = await axios.post(
+            'https://mobileprojectapi20210329154219.azurewebsites.net/transaction',
+            {
+                userId,
+                symbol,
+                qty,
+                price,
+                createdOn,
             }
         );
         return response.data;

@@ -11,6 +11,8 @@ import { API_KEY } from 'dotenv';
 import axios from 'axios';
 import SearchBar from '../components/SearchBar';
 import SearchResults from '../components/SearchResults';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { executeBuy } from '../network';
 
 const BuyScreen = () => {
     const [input, setInput] = useState('');
@@ -39,6 +41,10 @@ const BuyScreen = () => {
             />
 
             <SearchResults symbol={input} price={quote} />
+
+            <TouchableOpacity style={styles.button}>
+                <Text style={styles.buttonTitle}>Buy</Text>
+            </TouchableOpacity>
         </SafeAreaView>
     );
 };
@@ -49,6 +55,22 @@ const styles = StyleSheet.create({
         backgroundColor: '#121212',
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    button: {
+        backgroundColor: '#b73535',
+        marginLeft: 30,
+        marginRight: 30,
+        marginTop: 20,
+        height: 48,
+        padding: 15,
+        borderRadius: 5,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    buttonTitle: {
+        color: 'white',
+        fontSize: 16,
+        fontWeight: 'bold',
     },
 });
 
