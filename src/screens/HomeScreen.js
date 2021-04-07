@@ -41,10 +41,9 @@ const HomeScreen = ({ user, setUser }) => {
         <View style={styles.container}>
             <Text style={styles.title}>Welcome back, {user.firstName} !</Text>
             <Text style={styles.title2}>
-                Portfolio B alance: {userPortfolio[0]?.value}
+                Portfolio Balance: {userPortfolio[0]?.value}
             </Text>
 
-            <Text style={styles.title2}>Transaction History</Text>
             <TouchableOpacity
                 style={styles.button}
                 onPress={() => onLogoutPress()}
