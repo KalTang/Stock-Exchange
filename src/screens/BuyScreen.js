@@ -12,7 +12,7 @@ import axios from 'axios';
 import SearchBar from '../components/SearchBar';
 import SearchResults from '../components/SearchResults';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { executeBuy } from '../network';
+import { executeBuy, executeSell } from '../network';
 
 const BuyScreen = () => {
     const [input, setInput] = useState('');
@@ -31,6 +31,20 @@ const BuyScreen = () => {
             console.log(data);
         }
     };
+
+    const handleSell = async (data) => {
+        try {
+            const res = await executeSell(data);
+            console.log(data);
+            if (res) {
+                setAmount('');
+            }
+        } catch (e) {
+            console.log(e);
+            console.log(data);
+        }
+    };
+
     const searchAPI = async () => {
         //Get current price Quote "C"
         try {
@@ -81,6 +95,19 @@ const BuyScreen = () => {
                     }}
                 >
                     <Text style={styles.buttonTitle}>Buy</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => {
+                        handleSell({
+                            symbol: input,
+                            qty: parseInt(amount),
+                            price: quote,
+                            createdOn: new Date(),
+                        });
+                    }}
+                >
+                    <Text style={styles.buttonTitle}>Sell</Text>
                 </TouchableOpacity>
             </View>
         </SafeAreaView>
