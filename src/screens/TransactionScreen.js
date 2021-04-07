@@ -8,9 +8,24 @@ import {
     StyleSheet,
 } from 'react-native';
 import { getPortfolio } from '../network';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const TransactionScreen = () => {
     const [userPortfolio, setUserPortfolio] = useState('');
+    const [amount, setAmount] = useState('');
+
+    const handleSell = async (data) => {
+        try {
+            const res = await executeSell(data);
+            console.log(data);
+            if (res) {
+                setAmount('');
+            }
+        } catch (e) {
+            console.log(e);
+            console.log(data);
+        }
+    };
 
     useEffect(() => {
         (async () => {
@@ -28,17 +43,45 @@ const TransactionScreen = () => {
 
             <View>
                 <Text style={styles.details}>
-                    PositionID: {userPortfolio[1].positionId}
+                    PositionID:
+                    {/* {userPortfolio[1].positionId} */}
                 </Text>
                 <Text style={styles.details}>
-                    Symbol: {userPortfolio[1].symbol}
+                    Symbol:
+                    {/* {userPortfolio[1].symbol} */}
                 </Text>
                 <Text style={styles.details}>
-                    Quantity: {userPortfolio[1].qty}
+                    Quantity:
+                    {/* {userPortfolio[1].qty} */}
                 </Text>
                 <Text style={styles.details}>
-                    Value: {userPortfolio[1].value}
+                    Value:
+                    {/* {userPortfolio[1].value} */}
                 </Text>
+            </View>
+            <View style={{ display: 'flex', flexDirection: 'row' }}>
+                <TextInput
+                    style={styles.input}
+                    placeholder=" amount"
+                    placeholderTextColor="#aaaaaa"
+                    onChangeText={(text) => setAmount(text)}
+                    value={amount}
+                    underlineColorAndroid="transparent"
+                    autoCapitalize="none"
+                />
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => {
+                        handleSell({
+                            symbol: input,
+                            qty: parseInt(amount),
+                            price: quote,
+                            createdOn: new Date(),
+                        });
+                    }}
+                >
+                    <Text style={styles.buttonTitle}>Sell</Text>
+                </TouchableOpacity>
             </View>
         </SafeAreaView>
     );

@@ -42,8 +42,32 @@ export async function registerUser({ userId }) {
     }
 }
 
-//Buy and sells a stock
+//Buy a stock
 export async function executeBuy({ symbol, qty, price, createdOn }) {
+    try {
+        const uid = getUserId();
+        console.log(uid);
+        const response = await axios.post(
+            'https://mobileprojectapi20210329154219.azurewebsites.net/transaction',
+            {
+                userId: uid,
+                symbol,
+                qty,
+                price,
+                createdOn,
+            }
+        );
+
+        console.log(response.data);
+        return response.data;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+//Sell a stock
+export async function executeSell({ symbol, qty, price, createdOn }) {
     try {
         const uid = getUserId();
         console.log(uid);
