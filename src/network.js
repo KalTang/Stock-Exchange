@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { firebase } from '../firebase/config';
 
+//Gets user ID from Firebase
 export const getUserId = () => {
     try {
         const userInfo = firebase.auth().currentUser;
@@ -9,9 +10,11 @@ export const getUserId = () => {
         console.log(e);
     }
 };
+
 //gets a users portfolio
 export const getPortfolio = async () => {
     try {
+        //calls the firebase userID to be used in database end point
         const uid = getUserId();
         // console.log(uid);
         const res = await axios({

@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import BuyScreen from '../../screens/BuyScreen';
-import AddFundsScreen from '../../screens/AddFundsScreen';
+import TransactionScreen from '../../screens/TransactionScreen';
 import HomeScreen from '../../screens/HomeScreen';
 const BottomTab = createBottomTabNavigator();
 export default function BottomTabNavigator({ user, setUser }) {
@@ -13,7 +13,10 @@ export default function BottomTabNavigator({ user, setUser }) {
                     <HomeScreen {...props} user={user} setUser={setUser} />
                 )}
             </BottomTab.Screen>
-            <BottomTab.Screen name="Transactions" component={AddFundsScreen} />
+            <BottomTab.Screen
+                name="Transactions"
+                component={TransactionScreen}
+            />
         </BottomTab.Navigator>
     );
 }

@@ -13,7 +13,6 @@ import SearchBar from '../components/SearchBar';
 import SearchResults from '../components/SearchResults';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { executeBuy } from '../network';
-import { firebase } from '../../firebase/config';
 
 const BuyScreen = () => {
     const [input, setInput] = useState('');
