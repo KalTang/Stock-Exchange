@@ -39,6 +39,7 @@ const BuyScreen = () => {
             if (res) {
                 setAmount('');
             }
+            console.log(data);
         } catch (e) {
             console.log(e);
             console.log(data);
@@ -104,7 +105,7 @@ const BuyScreen = () => {
                     onPress={() => {
                         handleSell({
                             symbol: input,
-                            qty: parseInt(amount),
+                            qty: parseInt(-amount),
                             price: quote,
                             createdOn: new Date(),
                         });
