@@ -44,7 +44,6 @@ const RegisterScreen = ({ navigation }) => {
                     })
                     .then(() => {
                         console.log('Register successfully');
-                        // navigation.navigate('Home', { user: data });
                     })
                     .catch((error) => {
                         alert(error);

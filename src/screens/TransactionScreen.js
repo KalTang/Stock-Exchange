@@ -43,38 +43,13 @@ const TransactionScreen = () => {
     return (
         <SafeAreaView style={styles.container}>
             <Text style={styles.title}>Transactions</Text>
-            {/* {console.log(userPortfolios)} */}
+
             {transactions.map((transaction) => (
                 <TransactionItems
                     transaction={transaction}
                     key={transaction.positionId}
                 />
             ))}
-            {/*        
-            <View style={{ display: 'flex', flexDirection: 'row' }}>
-                <TextInput
-                    style={styles.input}
-                    placeholder=" amount"
-                    placeholderTextColor="#aaaaaa"
-                    onChangeText={(text) => setAmount(text)}
-                    value={amount}
-                    underlineColorAndroid="transparent"
-                    autoCapitalize="none"
-                />
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => {
-                        handleSell({
-                            symbol: input,
-                            qty: parseInt(amount),
-                            price: quote,
-                            createdOn: new Date(),
-                        });
-                    }}
-                >
-                    <Text style={styles.buttonTitle}>Sell</Text>
-                </TouchableOpacity> */}
-            {/* </View> */}
         </SafeAreaView>
     );
 };
