@@ -1,13 +1,6 @@
 import React from 'react';
 import { EvilIcons } from '@expo/vector-icons';
-import {
-    View,
-    Text,
-    TextInput,
-    SafeAreaView,
-    Button,
-    StyleSheet,
-} from 'react-native';
+import { View, TextInput, StyleSheet } from 'react-native';
 
 const SearchBar = ({ input, onInputChange, onInputSubmit }) => {
     return (
