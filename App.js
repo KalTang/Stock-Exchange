@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import BottomTabNavigator from './src/components/navigation/BottomTabNavigator';
 import Main from './src/components/navigation/MainNavigator';
 import { firebase } from './firebase/config';
+
 const Stack = createStackNavigator();
 export default function App() {
     const [user, setUser] = useState(null);

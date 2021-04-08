@@ -9,50 +9,30 @@ import {
 } from 'react-native';
 import { getPortfolio } from '../network';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import TransactionItems from '../components/TransactionItems';
 
-const TransactionScreen = () => {
-    const [userPortfolios, setUserPortfolios] = useState({});
-    const [amount, setAmount] = useState('');
-
-    const handleSell = async (data) => {
-        try {
-            const res = await executeSell(data);
-            console.log(data);
-            if (res) {
-                setAmount('');
-            }
-        } catch (e) {
-            console.log(e);
-            console.log(data);
-        }
-    };
-
-    useEffect(() => {
-        (async () => {
-            try {
-                const tempUserPortfolio = await getPortfolio();
-                setUserPortfolios(tempUserPortfolio);
-            } catch (error) {
-                console.error(error.message);
-            }
-        })();
-        dd;
-    }, []);
-
+const TransactionItems = ({ userPortfolio }) => {
     return (
         <SafeAreaView style={styles.container}>
             <Text style={styles.title}>Transactions</Text>
-            {/* {console.log(userPortfolios)} */}
 
-            {userPortfolios.map(
-                (userPortfolio) => console.log(userPortfolio)
-                // <TransactionItems
-                //     userPortfolio={userPortfolio}
-                //     key={userPortfolio.positionId}
-                // />
-            )}
-            {/*        
+            <View>
+                <Text style={styles.details}>
+                    PositionID:
+                    {userPortfolio.positionId}
+                </Text>
+                <Text style={styles.details}>
+                    Symbol:
+                    {userPortfolio.symbol}
+                </Text>
+                <Text style={styles.details}>
+                    Quantity:
+                    {userPortfolio.qty}
+                </Text>
+                <Text style={styles.details}>
+                    Value:
+                    {userPortfolio.value}
+                </Text>
+            </View>
             <View style={{ display: 'flex', flexDirection: 'row' }}>
                 <TextInput
                     style={styles.input}
@@ -75,8 +55,8 @@ const TransactionScreen = () => {
                     }}
                 >
                     <Text style={styles.buttonTitle}>Sell</Text>
-                </TouchableOpacity> */}
-            {/* </View> */}
+                </TouchableOpacity>
+            </View>
         </SafeAreaView>
     );
 };
@@ -126,4 +106,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default TransactionScreen;
+export default TransactionItems;

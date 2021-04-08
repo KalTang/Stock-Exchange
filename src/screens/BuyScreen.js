@@ -83,6 +83,7 @@ const BuyScreen = () => {
                     underlineColorAndroid="transparent"
                     autoCapitalize="none"
                 />
+                {/* Handle buys */}
                 <TouchableOpacity
                     style={styles.button}
                     onPress={() => {
@@ -96,6 +97,8 @@ const BuyScreen = () => {
                 >
                     <Text style={styles.buttonTitle}>Buy</Text>
                 </TouchableOpacity>
+
+                {/* Handle sells */}
                 <TouchableOpacity
                     style={styles.button}
                     onPress={() => {
