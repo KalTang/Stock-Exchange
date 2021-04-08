@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         borderWidth: 2, // size/width of the border
         borderColor: 'lightgrey', // color of the border
-        padding: 15,
+
         borderRadius: 5,
     },
     button: {

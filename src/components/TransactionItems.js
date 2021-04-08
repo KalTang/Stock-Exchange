@@ -1,76 +1,59 @@
-import React, { useState, useEffect } from 'react';
-import {
-    View,
-    Text,
-    TextInput,
-    SafeAreaView,
-    Button,
-    StyleSheet,
-} from 'react-native';
-import { getPortfolio } from '../network';
-import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
-const TransactionItems = ({ transaction }) => {
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+const TransactionItems = ({ item }) => {
     return (
-        <SafeAreaView style={styles.container}>
-            <ScrollView>
+        <View style={styles.entityContainer}>
+            <View>
                 <Text style={styles.details}>
                     Symbol:
-                    {transaction.symbol}
+                    {item.symbol}
                 </Text>
                 <Text style={styles.details}>
                     Quantity:
-                    {transaction.qty}
+                    {item.qty}
                 </Text>
                 <Text style={styles.details}>
                     Value:
-                    {transaction.value}
+                    {item.value}
                 </Text>
-            </ScrollView>
-        </SafeAreaView>
+            </View>
+        </View>
     );
 };
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        alignItems: 'center',
         backgroundColor: '#121212',
-        alignItems: 'center',
     },
-    button: {
-        backgroundColor: '#b73535',
-        marginLeft: 30,
-        marginRight: 30,
-        marginTop: 20,
-        height: 48,
+    listContainer: {
+        padding: 20,
+        width: '80%',
+        flex: 1,
+    },
+    entityContainer: {
+        marginTop: 15,
+        borderColor: '#b73535',
+        borderWidth: 1,
         padding: 15,
-        borderRadius: 5,
-        alignItems: 'center',
-        justifyContent: 'center',
     },
-    buttonTitle: {
+    text: {
         color: 'white',
-        fontSize: 16,
+    },
+    title: {
+        marginTop: 10,
+        color: 'white',
+        fontSize: 30,
         fontWeight: 'bold',
+    },
+    subTitle: {
+        display: 'flex',
+        marginTop: 10,
+        color: 'white',
+        fontSize: 20,
     },
     details: {
         color: '#fff',
-        fontSize: 18,
-        fontWeight: 'bold',
-    },
-    input: {
-        height: 48,
-        borderWidth: 2, // size/width of the border
-        borderColor: 'lightgrey', // color of the border
-        overflow: 'hidden',
-        backgroundColor: 'white',
-        marginTop: '5%',
-        padding: 10,
-    },
-    title: {
-        fontSize: 35,
-        fontWeight: 'bold',
-        color: '#b73535',
-        marginTop: '5%',
-        marginBottom: '5%',
     },
 });
 export default TransactionItems;

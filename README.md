@@ -2,11 +2,15 @@
 
 # :chart_with_upwards_trend: Stock Exchange app :chart_with_downwards_trend:
 
-An app where you can buy, sell, and view a variety of stocks :bar_chart:
+(Not fully completed) A mobile app built on React Native where you can buy, sell, and view a variety of stocks :bar_chart:
 
 </div>
 
 </br>
+
+## Preview
+
+<img src="https://i.imgur.com/KnYVpRa.gif" alt="Demo App" width="200"/>
 
 ## :bookmark_tabs: &nbsp; FEATURE LIST
 
@@ -21,12 +25,13 @@ An app where you can buy, sell, and view a variety of stocks :bar_chart:
 
 1. Be able to Login and register
 2. Buy, sell, and view a stock
-3. A system that
 
 ## :computer: Technologies
 
 -   React Native
 -   Firebase authentication
+-   Evil Icons
+
     </br>
 
 ## :file_folder: Support Documentation
@@ -51,4 +56,4 @@ An app where you can buy, sell, and view a variety of stocks :bar_chart:
 
 ## :books: Resources
 
--   Api resouce
+-   Api resource: [Finnhub.io](https://finnhub.io/)
