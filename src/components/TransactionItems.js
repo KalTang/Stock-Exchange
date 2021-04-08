@@ -8,52 +8,27 @@ import {
     StyleSheet,
 } from 'react-native';
 import { getPortfolio } from '../network';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import TransactionItems from '../components/TransactionItems';
-
-const TransactionScreen = () => {
-    const [userPortfolios, setUserPortfolios] = useState({});
-    const [amount, setAmount] = useState('');
-    const [transactions, setTransactions] = useState([]);
-
-    const handleSell = async (data) => {
-        try {
-            const res = await executeSell(data);
-            console.log(data);
-            if (res) {
-                setAmount('');
-            }
-        } catch (e) {
-            console.log(e);
-            console.log(data);
-        }
-    };
-
-    useEffect(() => {
-        (async () => {
-            try {
-                const tempUserPortfolio = await getPortfolio();
-                setTransactions(tempUserPortfolio);
-            } catch (error) {
-                console.error(error.message);
-            }
-        })();
-    }, []);
-
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
+const TransactionItems = ({ transaction }) => {
     return (
         <SafeAreaView style={styles.container}>
-            <Text style={styles.title}>Transactions</Text>
-
-            {transactions.map((transaction) => (
-                <TransactionItems
-                    transaction={transaction}
-                    key={transaction.positionId}
-                />
-            ))}
+            <ScrollView>
+                <Text style={styles.details}>
+                    Symbol:
+                    {transaction.symbol}
+                </Text>
+                <Text style={styles.details}>
+                    Quantity:
+                    {transaction.qty}
+                </Text>
+                <Text style={styles.details}>
+                    Value:
+                    {transaction.value}
+                </Text>
+            </ScrollView>
         </SafeAreaView>
     );
 };
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -98,5 +73,4 @@ const styles = StyleSheet.create({
         marginBottom: '5%',
     },
 });
-
-export default TransactionScreen;
+export default TransactionItems;
