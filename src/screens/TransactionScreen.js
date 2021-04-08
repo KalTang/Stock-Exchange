@@ -1,39 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import {
-    View,
-    Text,
-    TextInput,
-    SafeAreaView,
-    Button,
-    StyleSheet,
-} from 'react-native';
-import { getPortfolio } from '../network';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import React, { useEffect, useState } from 'react';
+import { FlatList, Text, View, StyleSheet } from 'react-native';
+import { firebase } from '../../firebase/config';
 import TransactionItems from '../components/TransactionItems';
+import { getPortfolio } from '../network';
 
-const TransactionScreen = () => {
-    const [userPortfolios, setUserPortfolios] = useState({});
-    const [amount, setAmount] = useState('');
+export default function AddFundsScreen({ user, symbol, price }) {
     const [transactions, setTransactions] = useState([]);
-
-    const handleSell = async (data) => {
-        try {
-            const res = await executeSell(data);
-            console.log(data);
-            if (res) {
-                setAmount('');
-            }
-        } catch (e) {
-            console.log(e);
-            console.log(data);
-        }
-    };
-
     useEffect(() => {
         (async () => {
             try {
                 const tempUserPortfolio = await getPortfolio();
                 setTransactions(tempUserPortfolio);
+                console.log(transactions);
             } catch (error) {
                 console.error(error.message);
             }
@@ -41,62 +19,60 @@ const TransactionScreen = () => {
     }, []);
 
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
             <Text style={styles.title}>Transactions</Text>
-
-            {transactions.map((transaction) => (
-                <TransactionItems
-                    transaction={transaction}
-                    key={transaction.positionId}
-                />
-            ))}
-        </SafeAreaView>
+            {/* {console.log(transactions)} */}
+            {/* {transactions.map((transaction) => (
+                <TransactionItems transaction={transaction} />
+            ))} */}
+            {transactions.length > 0 ? (
+                <View style={styles.listContainer}>
+                    <FlatList
+                        data={transactions}
+                        renderItem={TransactionItems}
+                        keyExtractor={(item) => item.positionId}
+                        removeClippedSubviews={true}
+                    />
+                </View>
+            ) : (
+                <Text style={styles.subTitle}>You have no transaction...</Text>
+            )}
+        </View>
     );
-};
-
+}
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        alignItems: 'center',
         backgroundColor: '#121212',
-        alignItems: 'center',
     },
-    button: {
-        backgroundColor: '#b73535',
-        marginLeft: 30,
-        marginRight: 30,
-        marginTop: 20,
-        height: 48,
+    listContainer: {
+        padding: 20,
+        width: '80%',
+        flex: 1,
+    },
+    entityContainer: {
+        marginTop: 15,
+        borderColor: '#b73535',
+        borderWidth: 1,
         padding: 15,
-        borderRadius: 5,
-        alignItems: 'center',
-        justifyContent: 'center',
     },
-    buttonTitle: {
+    text: {
         color: 'white',
-        fontSize: 16,
+    },
+    title: {
+        marginTop: 10,
+        color: 'white',
+        fontSize: 30,
         fontWeight: 'bold',
+    },
+    subTitle: {
+        display: 'flex',
+        marginTop: 10,
+        color: 'white',
+        fontSize: 20,
     },
     details: {
         color: '#fff',
-        fontSize: 18,
-        fontWeight: 'bold',
-    },
-    input: {
-        height: 48,
-        borderWidth: 2, // size/width of the border
-        borderColor: 'lightgrey', // color of the border
-        overflow: 'hidden',
-        backgroundColor: 'white',
-        marginTop: '5%',
-        padding: 10,
-    },
-    title: {
-        fontSize: 35,
-        fontWeight: 'bold',
-        color: '#b73535',
-        marginTop: '5%',
-        marginBottom: '5%',
     },
 });
-
-export default TransactionScreen;

@@ -25,6 +25,9 @@ const BuyScreen = () => {
             console.log(data);
             if (res) {
                 setAmount('');
+                alert(
+                    `Sucessfully purchased ${amount}X of ${input.toUpperCase()} at ${quote}! `
+                );
             }
         } catch (e) {
             console.log(e);
@@ -38,6 +41,9 @@ const BuyScreen = () => {
             console.log(data);
             if (res) {
                 setAmount('');
+                alert(
+                    `Sucessfully sold ${amount}X of ${input.toUpperCase()} at ${quote}! `
+                );
             }
             console.log(data);
         } catch (e) {
