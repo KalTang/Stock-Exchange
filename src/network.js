@@ -16,7 +16,7 @@ export const getPortfolio = async () => {
     try {
         //calls the firebase userID to be used in database end point
         const uid = getUserId();
-        // console.log(uid);
+
         const res = await axios({
             method: 'get',
             url: `https://mobileprojectapi20210329154219.azurewebsites.net/portfolio/${uid}`,
@@ -46,7 +46,7 @@ export async function registerUser({ userId }) {
 export async function executeBuy({ symbol, qty, price, createdOn }) {
     try {
         const uid = getUserId();
-        console.log(uid);
+
         const response = await axios.post(
             'https://mobileprojectapi20210329154219.azurewebsites.net/transaction',
             {
@@ -70,7 +70,7 @@ export async function executeBuy({ symbol, qty, price, createdOn }) {
 export async function executeSell({ symbol, qty, price, createdOn }) {
     try {
         const uid = getUserId();
-        console.log(uid);
+
         const response = await axios.post(
             'https://mobileprojectapi20210329154219.azurewebsites.net/transaction',
             {

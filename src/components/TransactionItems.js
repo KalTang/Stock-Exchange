@@ -8,59 +8,27 @@ import {
     StyleSheet,
 } from 'react-native';
 import { getPortfolio } from '../network';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-
-const TransactionItems = ({ userPortfolio }) => {
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
+const TransactionItems = ({ transaction }) => {
     return (
         <SafeAreaView style={styles.container}>
-            <Text style={styles.title}>Transactions</Text>
-
-            <View>
-                <Text style={styles.details}>
-                    PositionID:
-                    {userPortfolio.positionId}
-                </Text>
+            <ScrollView>
                 <Text style={styles.details}>
                     Symbol:
-                    {userPortfolio.symbol}
+                    {transaction.symbol}
                 </Text>
                 <Text style={styles.details}>
                     Quantity:
-                    {userPortfolio.qty}
+                    {transaction.qty}
                 </Text>
                 <Text style={styles.details}>
                     Value:
-                    {userPortfolio.value}
+                    {transaction.value}
                 </Text>
-            </View>
-            <View style={{ display: 'flex', flexDirection: 'row' }}>
-                <TextInput
-                    style={styles.input}
-                    placeholder=" amount"
-                    placeholderTextColor="#aaaaaa"
-                    onChangeText={(text) => setAmount(text)}
-                    value={amount}
-                    underlineColorAndroid="transparent"
-                    autoCapitalize="none"
-                />
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => {
-                        handleSell({
-                            symbol: input,
-                            qty: parseInt(amount),
-                            price: quote,
-                            createdOn: new Date(),
-                        });
-                    }}
-                >
-                    <Text style={styles.buttonTitle}>Sell</Text>
-                </TouchableOpacity>
-            </View>
+            </ScrollView>
         </SafeAreaView>
     );
 };
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -105,5 +73,4 @@ const styles = StyleSheet.create({
         marginBottom: '5%',
     },
 });
-
 export default TransactionItems;

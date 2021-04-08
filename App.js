@@ -34,7 +34,6 @@ export default function App() {
     return (
         <SafeAreaProvider>
             <NavigationContainer>
-                {console.log(user)}
                 <Stack.Navigator>
                     {user ? (
                         <>

@@ -14,6 +14,7 @@ import TransactionItems from '../components/TransactionItems';
 const TransactionScreen = () => {
     const [userPortfolios, setUserPortfolios] = useState({});
     const [amount, setAmount] = useState('');
+    const [transactions, setTransactions] = useState([]);
 
     const handleSell = async (data) => {
         try {
@@ -32,26 +33,23 @@ const TransactionScreen = () => {
         (async () => {
             try {
                 const tempUserPortfolio = await getPortfolio();
-                setUserPortfolios(tempUserPortfolio);
+                setTransactions(tempUserPortfolio);
             } catch (error) {
                 console.error(error.message);
             }
         })();
-        dd;
     }, []);
 
     return (
         <SafeAreaView style={styles.container}>
             <Text style={styles.title}>Transactions</Text>
             {/* {console.log(userPortfolios)} */}
-
-            {userPortfolios.map(
-                (userPortfolio) => console.log(userPortfolio)
-                // <TransactionItems
-                //     userPortfolio={userPortfolio}
-                //     key={userPortfolio.positionId}
-                // />
-            )}
+            {transactions.map((transaction) => (
+                <TransactionItems
+                    transaction={transaction}
+                    key={transaction.positionId}
+                />
+            ))}
             {/*        
             <View style={{ display: 'flex', flexDirection: 'row' }}>
                 <TextInput
